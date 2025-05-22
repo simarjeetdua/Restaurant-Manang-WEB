@@ -128,6 +128,7 @@ $users = mysqli_query($con, "SELECT * FROM user ORDER BY id DESC");
         <label><input type="checkbox" name="is_admin"> Is Admin</label><br>
         <button type="submit">Add User</button>
     </form>
+    <p>all done</p>
 </body>
 </html>
 
