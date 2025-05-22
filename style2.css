@@ -1,0 +1,80 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    background: url('https://img.freepik.com/free-photo/top-view-french-fries-with-mustard-copy-space_23-2148701443.jpg?semt=ais_hybrid&w=740') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .container {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    max-width: 90%;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #3e3e3e;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  input {
+    padding: 12px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+  
+  input:focus {
+    border-color: #ff9f43;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 159, 67, 0.4);
+  }
+  
+  button {
+    padding: 12px;
+    background-color: #ff9f43;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #e2852f;
+  }
+  
+  .form-footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  
+  .form-footer a {
+    color: #ff6f00;
+    text-decoration: none;
+  }
+  
+  .form-footer a:hover {
+    text-decoration: underline;
+  }
+  

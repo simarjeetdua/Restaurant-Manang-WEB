@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Booking | Restaurant</title>
+  <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+  <div class="container">
+    <div class="heading"><h2>Reserve Your Table Now 🍽️</h2></div>
+    
+
+    <form action="server.php" method="post" class="form-box">
+      <!-- <input type="text" name="ID" placeholder="Customer ID" required> -->
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="text" name="phone" placeholder="Phone Number" required>
+      <input type="date" name="checkin" required>
+      <input type="time" name="checkin_time" required>
+      <input type="number" name="guests" placeholder="Guests" required>
+      <button type="submit">Submit Booking</button>
+    </form>
+
+ 
+    <form action="server.php" method="get" class="form-box">
+      <input type="text" name="searchName" placeholder="Search by name" required>
+      <button type="submit">Search</button>
+      <p>Want to see the menu? <a href="menu.php" target="_blank">Click here to view our menu</a></p>
+    </form>
+
+   
+    <div id="resultBox"></div>
+  </div>
+</body>
+</html>
