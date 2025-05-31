@@ -1,9 +1,8 @@
 <?php
 error_reporting(E_ALL);
-ini_set('display_errors', 1); // ✅ Show hidden PHP errors
+ini_set('display_errors', 1);
 
 session_start();
-ob_start(); // Prevent header error
 
 $server = "localhost";
 $username = "root";
@@ -42,9 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "<script>alert('❌ User not found'); window.location.href='login.html';</script>";
     }
+} else {
+    header("Location: login.html");
+    exit();
 }
 ?>
-
-
-
 

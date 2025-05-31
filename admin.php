@@ -20,12 +20,16 @@ if (!$con) {
 if (isset($_GET['delete_booking'])) {
     $id = intval($_GET['delete_booking']);
     mysqli_query($con, "DELETE FROM bookings WHERE ID = $id");
+    header("Location: admin.php");
+    exit();
 }
 
 // DELETE user
 if (isset($_GET['delete_user'])) {
     $id = intval($_GET['delete_user']);
     mysqli_query($con, "DELETE FROM user WHERE id = $id");
+    header("Location: admin.php");
+    exit();
 }
 
 // ADD new user
@@ -37,11 +41,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['new_user'])) {
     $is_admin = isset($_POST['is_admin']) ? 1 : 0;
 
     mysqli_query($con, "INSERT INTO user (name, email, password, is_admin) VALUES ('$name', '$email', '$hashed_password', $is_admin)");
+    header("Location: admin.php");
+    exit();
 }
 
 // SEARCH
 $search_query = "";
-if (isset($_GET['search'])) {
+if (isset($_GET['search']) && !empty(trim($_GET['search']))) {
     $term = mysqli_real_escape_string($con, $_GET['search']);
     $search_query = "WHERE name LIKE '%$term%' OR checkin LIKE '%$term%'";
 }
@@ -72,7 +78,7 @@ $users = mysqli_query($con, "SELECT * FROM user ORDER BY id DESC");
 
     <!-- Search -->
     <form method="GET">
-        <input type="text" name="search" placeholder="Search by name or date">
+        <input type="text" name="search" placeholder="Search by name or date" value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>">
         <button type="submit">Search</button>
     </form>
 
@@ -86,12 +92,12 @@ $users = mysqli_query($con, "SELECT * FROM user ORDER BY id DESC");
         <?php while($row = mysqli_fetch_assoc($bookings)): ?>
             <tr>
                 <td><?= $row['ID'] ?></td>
-                <td><?= $row['name'] ?></td>
-                <td><?= $row['email'] ?></td>
-                <td><?= $row['phone'] ?></td>
-                <td><?= $row['checkin'] ?></td>
-                <td><?= $row['checkin_time'] ?></td>
-                <td><?= $row['guests'] ?></td>
+                <td><?= htmlspecialchars($row['name']) ?></td>
+                <td><?= htmlspecialchars($row['email']) ?></td>
+                <td><?= htmlspecialchars($row['phone']) ?></td>
+                <td><?= htmlspecialchars($row['checkin']) ?></td>
+                <td><?= htmlspecialchars($row['checkin_time']) ?></td>
+                <td><?= htmlspecialchars($row['guests']) ?></td>
                 <td>
                     <a href="?delete_booking=<?= $row['ID'] ?>" onclick="return confirm('Delete this booking?')">Delete</a>
                 </td>
@@ -108,8 +114,8 @@ $users = mysqli_query($con, "SELECT * FROM user ORDER BY id DESC");
         <?php while($u = mysqli_fetch_assoc($users)): ?>
             <tr>
                 <td><?= $u['id'] ?></td>
-                <td><?= $u['name'] ?></td>
-                <td><?= $u['email'] ?></td>
+                <td><?= htmlspecialchars($u['name']) ?></td>
+                <td><?= htmlspecialchars($u['email']) ?></td>
                 <td><?= $u['is_admin'] ? "Yes" : "No" ?></td>
                 <td>
                     <a href="?delete_user=<?= $u['id'] ?>" onclick="return confirm('Delete this user?')">Delete</a>
@@ -133,3 +139,4 @@ $users = mysqli_query($con, "SELECT * FROM user ORDER BY id DESC");
 </html>
 
 
+hi
